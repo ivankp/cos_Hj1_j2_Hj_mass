@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
+WXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH5QINAzMhuLNgGwAAAJVJREFUWMNjYGBg+A/FAwJYiFJV
+jseBnQyMtHcAAwODcagxhtjZ1WcpDgEmhgEGow4YcAewUGrAGTxZ2ISBcA5hoYYvlIwxc8i9s2dH
+08BQS4QuHXjqgwr65AJBJczE9P7e2dE0MFoSkg3+d+AuJRkrIKUkC829KIiZsBnenx1NA6MOGHXA
+qANGHTB4HMA4kD3jQRECAAoHF45AI4mFAAAAAElFTkSuQmCC
+">
+<title>Plots</title>
+<style>
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.flex > * {
+  display: inline-block;
+}
+.top {
+  vertical-align: top;
+}
+label {
+  user-select: none;
+  font-family: sans-serif;
+}
+
+#menu {
+  margin: 0 25px 0 0;
+}
+
+figure {
+  margin: 0;
+}
+figure > figcaption {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+ul.file-tree {
+  font-family: monospace;
+}
+ul.file-tree, ul.file-tree ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+ul.file-tree ul {
+  padding-left: 1.2em;
+}
+ul.file-tree li {
+  list-style-type: none;
+}
+ul.file-tree span {
+  cursor: pointer;
+}
+ul.file-tree span:hover {
+  text-decoration: underline;
+}
+ul.file-tree li > .dir::before {
+  content: "\25B6";
+  display: inline-block;
+  width: 1.2em;
+  text-align: center;
+  transition: transform 0.07s linear;
+}
+ul.file-tree li.exp > .dir::before {
+  transform: rotate(90deg);
+  transition: transform 0.07s linear;
+}
+ul.file-tree li:not(.exp) ul {
+  display: none;
+}
+.file-tree a {
+  color: black;
+}
+
+.info {
+  font-family: monospace;
+  font-size: smaller;
+}
+.info p, .info tr, .info td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.info table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.info td {
+  vertical-align: top;
+}
+.info td:nth-child(2) {
+  padding-left: 3px;
+}
+
+.left > p {
+  margin: 10px 0;
+}
+
+kbd {
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+  color: #333;
+  display: inline-block;
+  font-size: .85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+a.ext::after {
+  content: "\2937";
+  display: inline-block;
+  transform: rotate(-90deg);
+  margin-left: 3px;
+}
+
+#local_file {
+  white-space: normal;
+  word-wrap: break-word;
+  width: 200px;
+  overflow: auto;
+}
+
+select.dim {
+  min-width: 100px;
+}
+#figure_select label {
+  font-size: smaller;
+  vertical-align: middle;
+}
+label > input[type="checkbox"] {
+  vertical-align: middle;
+}
+</style>
+<script src="d3v6.js"></script>
+<script src="main.js"></script>
+</head>
+<body>
+<div class="flex">
+
+<div class="left">
+  <div id="menu"></div>
+  <p>
+    <input type="file" id="local_file" accept=".json" style="display: none;">
+    <button id="local_file_button">Open file</button>
+  </p>
+  <p style="font-size: smaller;">
+    Click to expand or show items.<br>
+    <kbd>Ctrl</kbd>-click to show data.<br>
+    Press <kbd>Ctrl</kbd>+<kbd>S</kbd> to save the plot.<br>
+    Press <kbd>Ctrl</kbd>+<kbd>O</kbd> to open a local file.
+  </p>
+  <p>
+    <a href="https://github.com/ivankp/web-plots" target="_blank">GitHub</a>
+  </p>
+</div>
+
+<div>
+  <div id="figure_select"></div>
+  <div id="figures"></div>
+</div>
+
+</div>
+</body>
+</html>
